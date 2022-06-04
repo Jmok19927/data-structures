@@ -38,6 +38,27 @@ describe('binarySearchTree', function() {
     expect(array).to.eql([5, 2, 3, 7]);
   });
 
-  // it('should correctly alter values within the tree after applying a callback function')
+  it('should correctly alter values within the tree after applying a callback function', function() {
+
+    var array = [];
+    var multiplyByTwoAndPush = function(value) {
+      array.push(value * 2);
+    }
+
+
+    binarySearchTree.insert(2);
+    binarySearchTree.insert(3);
+    binarySearchTree.insert(7);
+    binarySearchTree.insert(4);
+    binarySearchTree.depthFirstLog(multiplyByTwoAndPush);
+    expect(array).to.eql([10, 4, 6, 8, 14]);
+    // expect(binarySearchTree.contains(6)).to.equal(true);
+    // expect(binarySearchTree.contains(8)).to.equal(true);
+    // expect(binarySearchTree.contains(14)).to.equal(true);
+    // expect(binarySearchTree.contains(2)).to.equal(false);
+    // expect(binarySearchTree.contains(3)).to.equal(false);
+    // expect(binarySearchTree.contains(7)).to.equal(false);
+
+  })
 
 });
