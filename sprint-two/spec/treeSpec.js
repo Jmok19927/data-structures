@@ -59,5 +59,30 @@ describe('tree', function() {
     expect(tree.contains(12)).to.equal(true);
 
   });
+  //advanced tests
+
+  it('should have a parent property', function() {
+    tree.addChild(1);
+    tree.children[0].addChild(2);
+    expect(tree.children[0].children[0].parent.value).to.equal(1);
+  });
+
+  it('should have a removeFromParent method that dissociates the current tree from its parents in both directions', function() {
+    expect(tree.removeFromParent).to.be.a('function');
+    tree.addChild(1);
+    var father = tree.children[0];
+    father.addChild(2);
+    var son = father.children[0];
+    expect(tree.contains(1)).to.equal(true);
+    expect(tree.contains(2)).to.equal(true);
+    son.removeFromParent();
+    expect(son.parent).to.equal(null);
+    expect(father.children.length).to.equal(0);
+    expect(tree.contains(2)).to.equal(false);
+
+
+  });
+
+
 
 });

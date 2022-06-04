@@ -43,7 +43,7 @@ describe('binarySearchTree', function() {
     var array = [];
     var multiplyByTwoAndPush = function(value) {
       array.push(value * 2);
-    }
+    };
 
 
     binarySearchTree.insert(2);
@@ -59,6 +59,6 @@ describe('binarySearchTree', function() {
     // expect(binarySearchTree.contains(3)).to.equal(false);
     // expect(binarySearchTree.contains(7)).to.equal(false);
 
-  })
+  });
 
 });
