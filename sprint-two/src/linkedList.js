@@ -14,8 +14,6 @@ var LinkedList = function() {
     if (list.head === null) { //setting a head if there is no nodes in the list
     list.head = newNode;
     }
-
-
   };
 
   list.removeHead = function() {

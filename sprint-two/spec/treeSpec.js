@@ -41,4 +41,23 @@ describe('tree', function() {
     expect(tree.contains(8)).to.equal(true);
   });
 
+  // new test below
+
+  it('should correctly detect children when there are many children', function() {
+    tree.addChild(1);
+    tree.addChild(2);
+    tree.addChild(3);
+    tree.addChild(4);
+    tree.addChild(5);
+    tree.addChild(6);
+    tree.addChild(7);
+    tree.addChild(8);
+    tree.addChild(9);
+    tree.addChild(10);
+    tree.addChild(11);
+    tree.addChild(12);
+    expect(tree.contains(12)).to.equal(true);
+
+  });
+
 });

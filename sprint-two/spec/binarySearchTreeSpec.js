@@ -37,4 +37,7 @@ describe('binarySearchTree', function() {
     binarySearchTree.depthFirstLog(func);
     expect(array).to.eql([5, 2, 3, 7]);
   });
+
+  // it('should correctly alter values within the tree after applying a callback function')
+
 });

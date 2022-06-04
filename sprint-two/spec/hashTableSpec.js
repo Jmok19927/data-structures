@@ -34,6 +34,20 @@ describe('hashTable', function() {
     hashTable.remove('Steven');
     expect(hashTable.retrieve('Steven')).to.equal(undefined);
   });
+  // new test below ----------------------------------------
+  it('should remove items correctly, in the event of a collision', function() {
+    var oldHashFunction = window.getIndexBelowMaxForKey;
+    window.getIndexBelowMaxForKey = function() { return 0; }; // breaking the hash function
+
+    hashTable.insert('Steven', 'Tyler');
+    hashTable.insert('Johnny', 'Mok');
+    expect(hashTable.retrieve('Johnny')).to.equal('Mok');
+    hashTable.remove('Johnny');
+    expect(hashTable.retrieve('Steven')).to.equal('Tyler');
+    expect(hashTable.retrieve('Johnny')).to.equal(undefined);
+    window.getIndexBelowMaxForKey = oldHashFunction;
+  });
+  // new test above ------------------------------------------
 
   it('should handle hash function collisions', function() {
     var v1 = 'val1';
@@ -47,7 +61,7 @@ describe('hashTable', function() {
     window.getIndexBelowMaxForKey = oldHashFunction;
   });
 
-  // (Advanced! Remove the extra "x" when you want the following tests to run)
+  //(Advanced! Remove the extra "x" when you want the following tests to run)
   xit ('should double in size when needed', function() {
     _.each(people, function(person) {
       var firstName = person[0];

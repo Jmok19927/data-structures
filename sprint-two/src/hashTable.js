@@ -34,8 +34,12 @@ HashTable.prototype.retrieve = function(k) {
   var index = getIndexBelowMaxForKey(k, this._limit);
   // need to increment the index until we find the matching key if the first key does not match
   if (this._storage.get(index)) {
+
     while (Object.keys(this._storage.get(index))[0] !== k) {
       index++;
+      if (this._storage.get(index) === undefined) {
+        return undefined;
+      }
     }
     return this._storage.get(index)[k];
   }
@@ -44,8 +48,10 @@ HashTable.prototype.retrieve = function(k) {
 
 HashTable.prototype.remove = function(k) {
   var index = getIndexBelowMaxForKey(k, this._limit);
-  while (Object.keys(this._storage.get(index))[0] !== k) {
-    index++;
+  if (this._storage.get(index)) {
+    while (Object.keys(this._storage.get(index))[0] !== k) {
+      index++;
+    }
   }
   this._storage.set(index, undefined);
 };

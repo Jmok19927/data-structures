@@ -62,7 +62,6 @@ binaryMethods.depthFirstLog = function(cb) {
   // for the current node: cb.apply(this, arguments)
   //if left/right isnt null run cb.apply on left/right
   // stops when left and right are both null
-  console.log(this);
   if (this !== null) {
     cb(this.value);
   }
