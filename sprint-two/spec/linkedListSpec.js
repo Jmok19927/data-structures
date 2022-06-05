@@ -52,4 +52,12 @@ describe('linkedList', function() {
   });
 
   // add more tests here to test the functionality of linkedList
+
+  it('should still contain the value if only 1 instance is removed', function() {
+    linkedList.addToTail(7);
+    linkedList.addToTail(7);
+    linkedList.removeHead();
+    expect(linkedList.contains(7)).to.equal(true);
+  });
+
 });

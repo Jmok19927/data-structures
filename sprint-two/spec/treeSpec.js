@@ -41,4 +41,48 @@ describe('tree', function() {
     expect(tree.contains(8)).to.equal(true);
   });
 
+  // new test below
+
+  it('should correctly detect children when there are many children', function() {
+    tree.addChild(1);
+    tree.addChild(2);
+    tree.addChild(3);
+    tree.addChild(4);
+    tree.addChild(5);
+    tree.addChild(6);
+    tree.addChild(7);
+    tree.addChild(8);
+    tree.addChild(9);
+    tree.addChild(10);
+    tree.addChild(11);
+    tree.addChild(12);
+    expect(tree.contains(12)).to.equal(true);
+
+  });
+  //advanced tests
+
+  it('should have a parent property', function() {
+    tree.addChild(1);
+    tree.children[0].addChild(2);
+    expect(tree.children[0].children[0].parent.value).to.equal(1);
+  });
+
+  it('should have a removeFromParent method that dissociates the current tree from its parents in both directions', function() {
+    expect(tree.removeFromParent).to.be.a('function');
+    tree.addChild(1);
+    var father = tree.children[0];
+    father.addChild(2);
+    var son = father.children[0];
+    expect(tree.contains(1)).to.equal(true);
+    expect(tree.contains(2)).to.equal(true);
+    son.removeFromParent();
+    expect(son.parent).to.equal(null);
+    expect(father.children.length).to.equal(0);
+    expect(tree.contains(2)).to.equal(false);
+
+
+  });
+
+
+
 });

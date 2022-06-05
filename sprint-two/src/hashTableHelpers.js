@@ -29,6 +29,16 @@ var LimitedArray = function(limit) {
     }
   };
 
+  limitedArray.print = function() {
+    var arr = [];
+    for (var i = 0; i < storage.length; i++ ) {
+      arr.push(storage[i]);
+    }
+    console.log(arr);
+  };
+
+
+
   var checkLimit = function(index) {
     if (typeof index !== 'number') {
       throw new Error('setter requires a numeric index for its first argument');
